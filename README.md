@@ -67,6 +67,16 @@ This command will:
 
 We use NGINX as a reverse proxy to handle incoming traffic and route requests to both the frontend and the backend. Although we have not implemented advanced security features like traffic filtering, rate limiting , etc. All of these are possible with NGINX
 
+## Error Handling
+
+<img src="media/error_handling.png">
+
+The user can input a city that does not exist on OpenWeather. In that case an error message is displayed stating that the city is not found.
+
+<img src="media/backend_api_error.png">
+
+The backend service may also be offline or general internet access unavailable. In that case, the frontend displays an "API error" message.
+
 ## Testing
 ### Backend Testing
 Navigate to the backend/ directory.
