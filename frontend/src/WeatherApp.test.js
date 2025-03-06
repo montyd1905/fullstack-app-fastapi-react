@@ -50,6 +50,7 @@ describe('WeatherApp Component', () => {
   test('displays error message when API call returns a non-OK response', async () => {
     global.fetch.mockResolvedValueOnce({
       ok: false,
+      status: 404,
       json: async () => ({ detail: "City not found" }),
     });
 
@@ -62,7 +63,7 @@ describe('WeatherApp Component', () => {
     fireEvent.click(button);
 
     await waitFor(() => {
-      expect(screen.getByText(/City not found/i)).toBeInTheDocument();
+      expect(screen.getByText("City: InvalidCity not found")).toBeInTheDocument();
     });
   });
 

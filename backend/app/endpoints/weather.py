@@ -38,6 +38,13 @@ async def get_weather(city: str):
             response = await client.get(BASE_URL, params=params)
             response.raise_for_status()
 
+        except httpx.HTTPStatusError as e:
+
+            raise HTTPException(
+                status_code=e.response.status_code,
+                detail=f"Error fetching weather data: {e.response.text}",
+            ) from e
+
         except httpx.RequestError as e:
 
             raise HTTPException(
